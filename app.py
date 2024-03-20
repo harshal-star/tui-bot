@@ -40,7 +40,7 @@ with st.sidebar:
       advanced natural language processing to provide precise, relevant information. Simplify your travel planning and get support in real-time with our 
       user-friendly chatbot, designed to enhance your TUI experience at every step.""")
 
-data_path = r"F:\consult\genai\tui\tui\tui\data"
+data_path = r"/data"
 
 files = os.listdir(data_path)
 
