@@ -40,7 +40,7 @@ with st.sidebar:
       advanced natural language processing to provide precise, relevant information. Simplify your travel planning and get support in real-time with our 
       user-friendly chatbot, designed to enhance your TUI experience at every step.""")
 
-data_path = r"/data"
+data_path = r"data/"
 
 files = os.listdir(data_path)
 
@@ -64,16 +64,16 @@ Answer:
 """
 
 def document_data(query, chat_history):
-   all_documents = []
-   for file in files:
-       file_path = os.path.join(data_path, file)
-       loader = TextLoader(file_path)
-       documents = loader.load()
-       all_documents.append(documents)
+   # all_documents = []
+   # for file in files:
+   #     file_path = os.path.join(data_path, file)
+   #     loader = TextLoader(file_path)
+   #     documents = loader.load()
+   #     all_documents.append(documents)
 
-   final_document = [item for sublist in all_documents for item in sublist]
-   text_splitter = RecursiveCharacterTextSplitter(chunk_size = 100, chunk_overlap = 50, separators = ["\n\n","\n"," ",""]) 
-   text = text_splitter.split_documents(documents = final_document) 
+   # final_document = [item for sublist in all_documents for item in sublist]
+   # text_splitter = RecursiveCharacterTextSplitter(chunk_size = 100, chunk_overlap = 50, separators = ["\n\n","\n"," ",""]) 
+   # text = text_splitter.split_documents(documents = final_document) 
 
    # creating embeddings using OPENAI
 
@@ -90,7 +90,8 @@ def document_data(query, chat_history):
    # loaded_vectors=FAISS.load_local("vectors", embeddings)
 
    # Create vector store using Pinecone
-   vectorstore = Pinecone.from_documents(text, embeddings, index_name = index_name, namespace = "tui")
+   # vectorstore = Pinecone.from_documents(text, embeddings, index_name = index_name, namespace = "tui")
+   vectorstore = Pinecone.from_existing_index(index_name, embeddings)
 
    # ConversationalRetrievalChain 
    qa = ConversationalRetrievalChain.from_llm(
