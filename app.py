@@ -19,7 +19,7 @@ st.set_page_config(layout = "wide")
 api_key = st.sidebar.text_input("Enter your OpenAI API key:", type="password", key="api_key_input")
 pinecone_api_key = st.sidebar.text_input("Enter your Pinecone API key:", type="password", key="pinecone_api_key_input")
 pinecone_env = st.sidebar.text_input("Enter your Pinecone environment name:", type="password", key="pinecone_env_key_input")
-index_name = st.sidebar.text_input("Enter your Pinecone Index name:", type="password", key="piencone_index_key_input")
+# index_name = st.sidebar.text_input("Enter your Pinecone Index name:", type="password", key="piencone_index_key_input")
 if api_key:
     os.environ["OPENAI_API_KEY"] = api_key
 
@@ -29,9 +29,7 @@ if pinecone_api_key:
 if pinecone_env:
     PINECONE_ENV = pinecone_env
 
-if index_name:
-    index_name = index_name
-
+index_name = "tui-bot"
 
 with st.sidebar:
    st.header('About the App')
