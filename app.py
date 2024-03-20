@@ -15,6 +15,13 @@ from langchain.vectorstores import Pinecone
 
 st.set_page_config(layout = "wide")
 
+with st.sidebar:
+   st.header('About the App')
+   st.write("""Welcome to the TUI Interactive FAQ Chatbot, powered by Streamlit. This tool is your digital guide to all things TUI, offering 
+      instant answers from our extensive FAQ database. Whether you have questions about booking, destinations, policies, or services, our chatbot leverages 
+      advanced natural language processing to provide precise, relevant information. Simplify your travel planning and get support in real-time with our 
+      user-friendly chatbot, designed to enhance your TUI experience at every step.""")
+
 # Sidebar for API key input
 api_key = st.sidebar.text_input("Enter your OpenAI API key:", type="password", key="api_key_input")
 pinecone_api_key = st.sidebar.text_input("Enter your Pinecone API key:", type="password", key="pinecone_api_key_input")
@@ -30,13 +37,6 @@ if pinecone_env:
     PINECONE_ENV = pinecone_env
 
 index_name = "tui-bot"
-
-with st.sidebar:
-   st.header('About the App')
-   st.write("""Welcome to the TUI Interactive FAQ Chatbot, powered by Streamlit. This tool is your digital guide to all things TUI, offering 
-      instant answers from our extensive FAQ database. Whether you have questions about booking, destinations, policies, or services, our chatbot leverages 
-      advanced natural language processing to provide precise, relevant information. Simplify your travel planning and get support in real-time with our 
-      user-friendly chatbot, designed to enhance your TUI experience at every step.""")
 
 data_path = r"data/"
 
